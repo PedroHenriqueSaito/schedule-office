@@ -1,0 +1,89 @@
+@for $i from 1 to 500 {
+    .p-#{$i}px {
+      padding: #{$i}px !important;
+    }
+  
+    .pt-#{$i}px {
+      padding-top: #{$i}px !important;
+    }
+  
+    .pb-#{$i}px {
+      padding-bottom: #{$i}px !important;
+    }
+  
+    .pl-#{$i}px {
+      padding-left: #{$i}px !important;
+    }
+  
+    .pr-#{$i}px {
+      padding-right: #{$i}px !important;
+    }
+  
+    .px-#{$i}px {
+      padding-right: #{$i}px !important;
+      padding-left: #{$i}px !important;
+    }
+  
+    .py-#{$i}px {
+      padding-top: #{$i}px !important;
+      padding-bottom: #{$i}px !important;
+    }
+  
+    .m-#{$i}px {
+      margin: #{$i}px !important;
+    }
+  
+    .mt-#{$i}px {
+      margin-top: #{$i}px !important;
+    }
+  
+    .mb-#{$i}px {
+      margin-bottom: #{$i}px !important;
+    }
+  
+    .ml-#{$i}px {
+      margin-left: #{$i}px !important;
+    }
+  
+    .mr-#{$i}px {
+      margin-right: #{$i}px !important;
+    }
+  
+    .mx-#{$i}px {
+      margin-right: #{$i}px !important;
+      margin-left: #{$i}px !important;
+    }
+  
+    .my-#{$i}px {
+      margin-top: #{$i}px !important;
+      margin-bottom: #{$i}px !important;
+    }
+  
+    .w-#{$i}px {
+      width: #{$i}px !important;
+    }
+  
+    .w-min-#{$i}px {
+      min-width: #{$i}px !important;
+    }
+  
+    .w-max-#{$i}px {
+      max-width: #{$i}px !important;
+    }
+  
+    .h-#{$i}px {
+      height: #{$i}px !important;
+    }
+  
+    .h-min-#{$i}px {
+      min-height: #{$i}px !important;
+    }
+  
+    .h-max-#{$i}px {
+      max-height: #{$i}px !important;
+    }
+  }
+  
+  .hidden {
+    display: none;
+  }
