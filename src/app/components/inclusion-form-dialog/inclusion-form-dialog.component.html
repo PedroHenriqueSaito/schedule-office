@@ -1,0 +1,21 @@
+<div>
+    <div>
+        <form [formGroup]="form">
+            <div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Escolha uma data</mat-label>
+                    <input matInput [matDatepicker]="datepicker" formControlName="data" >
+                    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancelar</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Selecionar</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                </mat-form-field>
+            </div>
+            <button mat-stroked-button color="primary" [disabled]="form.invalid" (click)="submitForm()">Confirmar</button>
+        </form>
+    </div>
+        <div *ngFor="let item of service.filteredOffices" class="py-10px">{{ item.data | dfnsFormat: 'dd/MMM/yy hh:mm' }}</div>
+</div>

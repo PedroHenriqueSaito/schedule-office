@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { InclusionFormDialogComponent } from '../components/inclusion-form-dialog/inclusion-form-dialog.component';
 
 @Component({
   selector: 'app-office-card',
@@ -7,12 +9,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class OfficeCardComponent implements OnInit {
   @Input()
-  titulo: String = 'Gandhi';
+  titulo!: String;
 
   @Input()
-  descricao: String = 'Aquario grande';
+  descricao!: String;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {
+    
+  }
 
   ngOnInit(): void {}
+
+  openFormDialog(office: String){
+    this.dialog.open(InclusionFormDialogComponent, {data: {office:office}})
+  }
+
 }

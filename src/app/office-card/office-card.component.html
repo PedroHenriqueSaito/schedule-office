@@ -1,4 +1,13 @@
-<mat-card class="mat-elevation-z0 card-border">
-  <div>Titulo: {{ titulo }}</div>
-  <div>Descricao: {{ descricao }}</div>
+<mat-card class="mat-elevation-z3 card-border">
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <div fxLayout="column">
+      <div>Sala: {{ titulo }}</div>
+      <div>Descricao: {{ descricao }}</div>
+    </div>
+    <div>
+      <button mat-icon-button (click)="openFormDialog(titulo)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
 </mat-card>
