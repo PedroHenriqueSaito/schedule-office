@@ -1,0 +1,8 @@
+<div>
+    <div mat-card-title>
+        {{data.name}}
+    </div>
+    <div *ngFor="let item of scheduleService.filteredPerson" class="mat-subheading-1">
+        {{item.office}} - {{item.date | dfnsFormat: 'dd/MM/yy - hh:mm'}}
+    </div>
+</div>

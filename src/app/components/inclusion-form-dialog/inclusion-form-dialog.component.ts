@@ -11,7 +11,8 @@ import { SchedulesService, Schedule } from 'src/app/services/schedules.service';
 })
 export class InclusionFormDialogComponent implements OnInit {
     form: FormGroup = this.fb.group({
-        data: this.fb.control('', [Validators.required]),
+        date: this.fb.control('', [Validators.required]),
+        personId: this.fb.control('', [Validators.required])
     });
 
     constructor(
@@ -26,7 +27,7 @@ export class InclusionFormDialogComponent implements OnInit {
 
     submitForm() {
         this.service.filteredOffices.forEach((element) => {
-            if (element.data.toString() == this.form.value.data.toString()) {
+            if (element.date.toString() == this.form.value.date.toString()) {
                 this.form.reset();
                 this.snackBar.open('Essa data não está disponível.', '', {   duration: 3000 });
             }
@@ -34,8 +35,9 @@ export class InclusionFormDialogComponent implements OnInit {
 
         if (this.form.valid) {
             this.service.includeNewDate({
-                sala: this.data.office,
-                data: this.form.value.data,
+                office: this.data.office,
+                date: this.form.value.date,
+                personId: this.form.value.personId,
             });
             this.dialogRef.close();
         }

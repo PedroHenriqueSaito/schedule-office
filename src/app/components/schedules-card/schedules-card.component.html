@@ -1,0 +1,12 @@
+<mat-list role="list">
+  <div *ngFor="let item of scheduleService.filteredOffices" (click)="openInfoDialog(item)">
+    <div class="py-10px">
+      <span role="listitem" class="mat-title">{{ item.date | dfnsFormat: 'dd/MMM/yy hh:mm'}}
+      </span>
+      <div class="mat-subheading-1 pt-5px">
+        {{personService.person[item.personId-1].name}}
+      </div>
+    </div>
+    <mat-divider> </mat-divider>
+  </div>
+</mat-list>

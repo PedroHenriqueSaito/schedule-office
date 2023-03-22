@@ -1,4 +1,4 @@
-<mat-card class="mat-elevation-z3 card-border">
+<mat-card class="card-border" [ngClass]="[isSelected ? 'card-color mat-elevation-z0': 'mat-elevation-z3']">
   <div fxLayout="row" fxLayoutAlign="space-between">
     <div fxLayout="column">
       <div>Sala: {{ titulo }}</div>

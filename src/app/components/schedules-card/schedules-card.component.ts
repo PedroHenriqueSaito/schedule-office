@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ScheduleInfoComponent } from '../schedule-info/schedule-info.component';
-import { Schedule, SchedulesService } from '../services/schedules.service';
+import { Schedule, SchedulesService } from '../../services/schedules.service';
+import { PersonsService } from 'src/app/services/persons.service';
 
 @Component({
     selector: 'app-schedules-card',
@@ -9,7 +10,10 @@ import { Schedule, SchedulesService } from '../services/schedules.service';
     styleUrls: ['./schedules-card.component.scss'],
 })
 export class SchedulesCardComponent implements OnInit {
-    constructor(public service: SchedulesService, public dialog: MatDialog) {}
+    constructor(public scheduleService: SchedulesService, 
+        public dialog: MatDialog,
+        public personService: PersonsService
+        ) {}
 
     ngOnInit(): void {}
 

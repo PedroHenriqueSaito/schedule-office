@@ -1,16 +1,8 @@
-<div fxFlex="50%">
-    <div fxLayout="column">
-      <div *ngFor="let item of salas" class="px-24px py-16px">
-        <app-office-card
-          [titulo]="item.titulo"
-          [descricao]="item.descricao"
-          (click)="selectSala(item.titulo)"
-        ></app-office-card>
-      </div>
-    </div>
-</div>
-<div fxFlex="50%">
-  <app-schedules-card>    
-  </app-schedules-card>
-</div>
-
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Agendamentos">
+      <app-schedules></app-schedules>
+    </mat-tab>
+    <mat-tab label="Pessoas">
+      <app-persons-list></app-persons-list>
+    </mat-tab>
+</mat-tab-group>

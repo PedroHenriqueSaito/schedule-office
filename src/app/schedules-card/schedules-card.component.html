@@ -1,6 +1,0 @@
-<mat-list role="list">
-  <div *ngFor="let item of service.filteredOffices" (click)="openInfoDialog(item)">
-    <mat-list-item role="listitem" class="py-10px" >{{ item.data | dfnsFormat: 'dd/MMM/yy hh:mm' }}</mat-list-item>
-    <mat-divider> </mat-divider>
-  </div>
-</mat-list>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { InclusionFormDialogComponent } from '../components/inclusion-form-dialog/inclusion-form-dialog.component';
+import { InclusionFormDialogComponent } from '../inclusion-form-dialog/inclusion-form-dialog.component';
 
 @Component({
   selector: 'app-office-card',
@@ -13,6 +13,9 @@ export class OfficeCardComponent implements OnInit {
 
   @Input()
   descricao!: String;
+
+  @Input()
+  isSelected: boolean = false  
 
   constructor(public dialog: MatDialog) {
     
