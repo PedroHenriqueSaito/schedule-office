@@ -1,0 +1,54 @@
+<div>
+  <div>
+    <div mat-card-title class="title-color pb-10px">
+      {{ data.office }}
+    </div>
+    <form [formGroup]="form">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Escolha uma data</mat-label>
+          <input matInput [matDatepicker]="datepicker" formControlName="date" />
+          <mat-datepicker-toggle matSuffix [for]="datepicker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #datepicker>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancelar</button>
+              <button mat-raised-button color="primary" matDatepickerApply>
+                Selecionar
+              </button>
+            </mat-datepicker-actions>
+          </mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" ngModel>
+          <mat-label>Pessoa</mat-label>
+          <mat-select formControlName="personId">
+            <mat-option value="" >
+              <span class="inactive">
+                (nenhum)
+              </span></mat-option>
+            <mat-option
+              *ngFor="let item of personService.person"
+              [value]="item.id"
+            >
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <button
+        mat-stroked-button
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="submitForm()"
+      >
+        Confirmar
+      </button>
+    </form>
+  </div>
+  <div *ngFor="let item of scheduleService.filteredOfficePerson" class="py-10px">
+    {{ item.date | dfnsFormat : "dd/MMM/yy hh:mm" }}
+  </div>
+</div>

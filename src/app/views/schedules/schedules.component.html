@@ -1,0 +1,17 @@
+<div fxFlex="50%">
+    <div fxLayout="column">
+      <div *ngFor="let item of salas" class="px-24px py-16px" >
+        <app-office-card 
+          [titulo]="item.titulo"
+          [descricao]="item.descricao"
+          [isSelected]="selectedOffice == item.titulo"
+          (click)="selectSala(item.titulo)"
+          (newSchedule)="openFormDialog($event.office)"
+        ></app-office-card>
+      </div>
+    </div>
+</div>
+<div fxFlex="50%">
+  <app-schedules-card>    
+  </app-schedules-card>
+</div>
