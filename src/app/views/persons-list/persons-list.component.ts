@@ -1,33 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PersonScheduleComponent } from 'src/app/components/person-schedule/person-schedule.component';
+import { Subscription } from 'rxjs';
+import { PersonScheduleComponent } from 'src/app/components/person-schedule-dialog/person-schedule.component';
 import { Person, PersonsService } from 'src/app/services/persons.service';
 
 @Component({
   selector: 'app-persons-list',
   templateUrl: './persons-list.component.html',
-  styleUrls: ['./persons-list.component.scss']
+  styleUrls: ['./persons-list.component.scss'],
 })
-export class PersonsListComponent implements OnInit {
+export class PersonsListComponent implements OnInit, OnDestroy {
+  personSubscriber: Subscription;
+  dataSource!: Person[];
 
-  displayedColumns: string[]
-  dataSource: Person[]
+  constructor(public service: PersonsService, public dialog: MatDialog) {
+    this.personSubscriber = service.personChange.subscribe(() => {
+      this.dataSource = this.service.person;
+    });
+  }
 
-
-  constructor(public service:PersonsService,
-    public dialog: MatDialog
-    ) {
-    this.displayedColumns = Object.keys(this.service.person[0])
-    this.dataSource = this.service.person;
-
-  }  
+  ngOnInit(): void {}
   
-  ngOnInit(): void {
+  ngOnDestroy(): void{
+    this.personSubscriber.unsubscribe();
   }
 
-  openScheduleModal(element:Person){
-    this.dialog.open(PersonScheduleComponent, {data: {id:element.id, name:element.name}})
+  openScheduleModal(element: Person) {
+    this.dialog.open(PersonScheduleComponent, {
+      data: { id: element.id, name: element.name },
+    });
   }
-
-
 }

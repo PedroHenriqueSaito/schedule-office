@@ -1,11 +1,14 @@
-<mat-card class="card-border" [ngClass]="[isSelected ? 'card-color mat-elevation-z0': 'mat-elevation-z3']">
+<mat-card
+  class="card-border"
+  [ngClass]="[isSelected ? 'card-color mat-elevation-z0' : 'mat-elevation-z3']"
+>
   <div fxLayout="row" fxLayoutAlign="space-between">
     <div fxLayout="column">
       <div>Sala: {{ titulo }}</div>
       <div>Descricao: {{ descricao }}</div>
     </div>
     <div>
-      <button mat-icon-button (click)="openFormDialog(titulo)">
+      <button mat-icon-button (click)="addSchedule(titulo)">
         <mat-icon>add</mat-icon>
       </button>
     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ScheduleInfoComponent } from '../schedule-info/schedule-info.component';
+import { ScheduleInfoComponent } from '../schedule-info-dialog/schedule-info.component';
 import { Schedule, SchedulesService } from '../../services/schedules.service';
 import { PersonsService } from 'src/app/services/persons.service';
 
@@ -17,8 +17,11 @@ export class SchedulesCardComponent implements OnInit {
 
     ngOnInit(): void {}
 
-
     openInfoDialog(schedule: Schedule){
         this.dialog.open(ScheduleInfoComponent, {data:schedule})
+    }
+
+    deleteSchedule(id:String){
+        this.scheduleService.deleteItem(id);
     }
 }

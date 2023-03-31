@@ -1,7 +1,7 @@
 <div>
   <div>
     <div mat-card-title class="title-color pb-10px">
-      {{data.office}}
+      {{ data.office }}
     </div>
     <form [formGroup]="form">
       <div>
@@ -21,18 +21,34 @@
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field>
-          <mat-label>ID Pessoa</mat-label>
-          <input matInput type="text" formControlName="personId" />
+        <mat-form-field appearance="fill" ngModel>
+          <mat-label>Pessoa</mat-label>
+          <mat-select formControlName="personId">
+            <mat-option value="" >
+              <span class="inactive">
+                (nenhum)
+              </span></mat-option>
+            <mat-option
+              *ngFor="let item of personService.person"
+              [value]="item.id"
+            >
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 
-      <button mat-stroked-button color="primary" [disabled]="form.invalid" (click)="submitForm()">
+      <button
+        mat-stroked-button
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="submitForm()"
+      >
         Confirmar
       </button>
     </form>
   </div>
-  <div *ngFor="let item of service.filteredOffices" class="py-10px">
+  <div *ngFor="let item of scheduleService.filteredOfficePerson" class="py-10px">
     {{ item.date | dfnsFormat : "dd/MMM/yy hh:mm" }}
   </div>
 </div>

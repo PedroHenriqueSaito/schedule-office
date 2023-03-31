@@ -1,6 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { InclusionFormDialogComponent } from '../inclusion-form-dialog/inclusion-form-dialog.component';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-office-card',
@@ -17,14 +15,18 @@ export class OfficeCardComponent implements OnInit {
   @Input()
   isSelected: boolean = false  
 
-  constructor(public dialog: MatDialog) {
+  @Output()
+  newSchedule = new EventEmitter()
+
+  constructor() {
     
   }
 
   ngOnInit(): void {}
 
-  openFormDialog(office: String){
-    this.dialog.open(InclusionFormDialogComponent, {data: {office:office}})
+  addSchedule(office: String){
+    this.newSchedule.emit({office:office});
+
   }
 
 }

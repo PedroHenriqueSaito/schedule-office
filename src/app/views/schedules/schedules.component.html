@@ -6,6 +6,7 @@
           [descricao]="item.descricao"
           [isSelected]="selectedOffice == item.titulo"
           (click)="selectSala(item.titulo)"
+          (newSchedule)="openFormDialog($event.office)"
         ></app-office-card>
       </div>
     </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { InclusionFormDialogComponent } from 'src/app/components/inclusion-form-dialog/inclusion-form-dialog.component';
+import { PersonsService } from 'src/app/services/persons.service';
 import { SchedulesService } from '../../services/schedules.service';
 
 export interface Sala {
@@ -22,16 +25,24 @@ export class SchedulesComponent implements OnInit {
     { titulo: 'Lama', descricao: 'Aquario grande' },
   ];
 
+
   selectSala(office: String) {
-    this.service.filterOffice(office);
-    this.selectedOffice = office
+    this.scheduleService.officeFilter = office;
+    this.scheduleService.filterOffice();
+    this.selectedOffice = this.scheduleService.officeFilter
   } 
 
-  constructor(public service:SchedulesService){
-  
+  constructor(public scheduleService:SchedulesService, personService:PersonsService, public dialog:MatDialog){
+    scheduleService.getSchedules();
+    personService.getPerson();
+    
   }
 
   ngOnInit(): void {
+  }
+
+  openFormDialog(office:any){
+    this.dialog.open(InclusionFormDialogComponent, {data: {office:office}})
   }
 
 }

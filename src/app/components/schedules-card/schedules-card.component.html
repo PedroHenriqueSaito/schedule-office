@@ -1,10 +1,18 @@
 <mat-list role="list">
-  <div *ngFor="let item of scheduleService.filteredOffices" (click)="openInfoDialog(item)">
-    <div class="py-10px">
-      <span role="listitem" class="mat-title">{{ item.date | dfnsFormat: 'dd/MMM/yy hh:mm'}}
-      </span>
-      <div class="mat-subheading-1 pt-5px">
-        {{personService.person[item.personId-1].name}}
+  <div *ngFor="let item of scheduleService.filteredOffices">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div class="py-10px" (click)="openInfoDialog(item)" fxFlex="grow" matRipple >
+        <span role="listitem" class="mat-title"
+          >{{ item.date | dfnsFormat : "dd/MMM/yy hh:mm" }}
+        </span>
+        <div class="mat-subheading-1 pt-5px">
+          {{ personService.person[item.personId - 1].name }}
+        </div>
+      </div>
+      <div >
+        <button mat-icon-button (click)="deleteSchedule(item.id)">
+          <mat-icon class="button-color">delete</mat-icon>
+        </button>
       </div>
     </div>
     <mat-divider> </mat-divider>
